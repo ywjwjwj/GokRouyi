@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.GokUserMapper">
+    
+    <resultMap type="GokUser" id="GokUserResult">
+        <result property="id"    column="id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="userName"    column="user_name"    />
+        <result property="userBirth"    column="user_birth"    />
+        <result property="userStatus"    column="user_status"    />
+        <result property="flag"    column="flag"    />
+    </resultMap>
+
+    <sql id="selectGokUserVo">
+        select id, user_id, user_name, user_birth, user_status, flag from gok_user
+    </sql>
+
+    <select id="selectGokUserList" parameterType="GokUser" resultMap="GokUserResult">
+        <include refid="selectGokUserVo"/>
+        <where>  
+            <if test="userId != null  and userId != ''"> and user_id = #{userId}</if>
+            <if test="userName != null  and userName != ''"> and user_name like concat('%', #{userName}, '%')</if>
+            <if test="userBirth != null "> and user_birth = #{userBirth}</if>
+            <if test="userStatus != null "> and user_status = #{userStatus}</if>
+            <if test="flag != null "> and flag = #{flag}</if>
+        </where>
+    </select>
+    
+    <select id="selectGokUserById" parameterType="Long" resultMap="GokUserResult">
+        <include refid="selectGokUserVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertGokUser" parameterType="GokUser" useGeneratedKeys="true" keyProperty="id">
+        insert into gok_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">user_id,</if>
+            <if test="userName != null">user_name,</if>
+            <if test="userBirth != null">user_birth,</if>
+            <if test="userStatus != null">user_status,</if>
+            <if test="flag != null">flag,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">#{userId},</if>
+            <if test="userName != null">#{userName},</if>
+            <if test="userBirth != null">#{userBirth},</if>
+            <if test="userStatus != null">#{userStatus},</if>
+            <if test="flag != null">#{flag},</if>
+         </trim>
+    </insert>
+
+    <update id="updateGokUser" parameterType="GokUser">
+        update gok_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="userName != null">user_name = #{userName},</if>
+            <if test="userBirth != null">user_birth = #{userBirth},</if>
+            <if test="userStatus != null">user_status = #{userStatus},</if>
+            <if test="flag != null">flag = #{flag},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteGokUserById" parameterType="Long">
+        delete from gok_user where id = #{id}
+    </delete>
+
+    <delete id="deleteGokUserByIds" parameterType="String">
+        delete from gok_user where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

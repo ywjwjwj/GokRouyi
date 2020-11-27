@@ -171,5 +171,79 @@ https://doc.ruoyi.vip/ruoyi/document/xmjs.html#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB
 
 
 
+## 2020/11/27
+
 ### 4. 查看后台手册
 
+![1606452240247](README.assets/1606452240247.png)
+
+### 5. 增删改查
+
+#### 5.1 创建数据库表`gok_order`
+
+```mysql
+CREATE TABLE `gok_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar7(255) DEFAULT NULL COMMENT '用户id',
+  `user_name` varchar(255) DEFAULT NULL COMMENT '用户名',
+  `user_birth` date DEFAULT NULL COMMENT '用户生日',
+  `user_status` int(2) DEFAULT NULL COMMENT '用户状态（0为在线,1为离线）',
+  `flag` int(2) NOT NULL DEFAULT '0' COMMENT '伪删除（0为存在,1为隐藏）',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='GOK_用户表';
+```
+
+#### 5.2 开始生成代码
+
+##### 5.2.1 点击系统工具选择代码生成
+
+![1606478470210](README.assets/1606478470210.png)
+
+##### 5.2.2 导入创建的数据表
+
+![1606478456413](README.assets/1606478456413.png)
+
+##### 5.2.3 编辑生成信息
+
+对应信息1:
+
+![1606478586034](README.assets/1606478704701.png)
+
+对应信息2:
+
+![1606478810533](README.assets/1606478810533.png)
+
+保存，并生成代码![1606478861644](README.assets/1606478861644.png)，得到一个`ruoyi.zip`压缩包
+
+#### 5.3 项目模块配置
+
+##### 5.3.1 运行压缩包中的sql文件，新建maven模块，将项目导入到模块中
+
+![1606478364563](README.assets/1606478364563.png)
+
+##### 5.3.2 Controller报红，根据提示导入<!-- 通用工具-->即可
+
+```xml
+<!-- 通用工具  -->
+<dependencies>
+    <dependency>
+        <groupId>com.ruoyi</groupId>
+        <artifactId>ruoyi-common</artifactId>
+    </dependency>
+</dependencies>
+```
+
+##### 5.3.3 配置pom.xml
+
+```xml
+<!--  在ruoyi-admin的pom.xml配置新模块依赖  -->
+<dependency>
+    <groupId>com.ruoyi</groupId>
+    <artifactId>rouyi-goods</artifactId>
+    <version>4.5.0</version>
+</dependency>
+```
+
+#### 5.4 运行效果
+
+![1606479233069](README.assets/1606479233069.png)

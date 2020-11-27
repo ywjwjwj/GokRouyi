@@ -36,6 +36,12 @@
     <!-- 依赖声明 -->
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>com.ruoyi</groupId>
+                <artifactId>gok-user</artifactId>
+                <version>4.5.1</version>
+            </dependency>
         
             <!-- SpringBoot的依赖配置-->
             <dependency>
@@ -225,6 +231,7 @@
         <module>ruoyi-quartz</module>
         <module>ruoyi-generator</module>
         <module>ruoyi-common</module>
+        <module>gok-user</module>
     </modules>
     <packaging>pom</packaging>
 
