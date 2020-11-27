@@ -36,9 +36,7 @@ username: 账号
 password: 密码
 ```
 
- 
-
-![1606402872083](README.assets/1606402872083.png)
+![1606402872083](README.assets/1606480055990.png)
 
 
 
@@ -51,7 +49,7 @@ port: 端口
 context-path: 部署路径
 ```
 
-![1606402762842](README.assets/1606402762842.png)
+![1606402762842](README.assets/1606479988787.png)
 
 
 
@@ -59,7 +57,7 @@ context-path: 部署路径
 
 运行成功则显示该图案
 
-![1606403148670](README.assets/1606403148670.png)
+![1606403148670](README.assets/1606480109602.png)
 
 在浏览器中输入http://localhost:端口号（默认80） , 此次是http://localhost:8080
 
@@ -96,8 +94,6 @@ com.ruoyi
 ├── ruoyi-admin       // 后台服务
 ├── ruoyi-xxxxxx      // 其他模块
 ```
-
-![1606403686809](README.assets/1606403686809.png)
 
 
 
